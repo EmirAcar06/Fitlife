@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Antrenör Portalı</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image:url("arkaplan3.png");
+            color: #333;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin-right: 20px;
+           
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color:#555;
+            transition: 0.5s;
+        }
+        section {
+            display: none;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3, p, ul, li {
+            color:#fff;
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        button {
+            padding: 5px;
+            padding-left: 25px;
+            padding-right: 25px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid #fff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        textarea{
+            background: transparent; /* Input alanını şeffaf yapar */
+            border: 1px solid #fff; /* Kenar çizgilerini beyaz yapar */
+            color: #fff; /* Yazı rengini beyaz yapar */
+            border-radius: 10px;
+        }
+        ul li{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        /*yeni eklenenler*/
+        .profildiv {
+          display: flex;
+          justify-content: center;
+          padding: 10px;
+        }
+        #profil li{
+           background-color:rgba(0, 0, 0, 0.5);
+           color: #fff;
+           padding: 10px;
+           margin: 10px;
+           border-radius: 15px;
+           border: 1px solid #fff; /* İsteğe bağlı: çerçeve eklemek için */
+           list-style: none;
+           /*text-align: center;*/
+        }
+        .profile-picture {
+            width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 2px solid #fff; /* İsteğe bağlı: çerçeve eklemek için */
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* İsteğe bağlı: gölge eklemek için */
+        }
+        .profile-picture img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .danisan-kutu {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 300px;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FitLife2 - Antrenör Portalı</h1>
+        <!--<img src="logo.png" alt="Logo" style="max-width: 200px;">-->
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#danısanlar">Atanmış Danışanlar</a></li>
+            <li><a href="#egzersizprogramları">Egzersiz Programları</a></li>
+            <li><a href="#beslenmeplanları">Beslenme Planları</a></li>
+            <li><a href="#iletisim">İletişim</a></li>
+            
+        </ul>
+    </nav>
+
+    <section id="profil">
+        <div class="profildiv">
+            <div class="profile-picture">
+              <img id= profilfotografi src="kadirhoca.jpg" alt="Profile Picture">
+            </div>
+        </div>
+          <h2>Profil Bilgileri</h2>
+          <li id="antrenorAdiHTMLlist">Ad: Antrenör Adı,kadir </li>
+          <li id="antrenorSoyadiHTMLlist">Soyad: Antrenör Soyadı,hoca</li>
+          <li id="antrenorUzmanlikAlanlariHTMLlist">Uzmanlık Alanları: Kilo Aldırma, Kilo Verdirme, Kilo Koruma, Kas Kazanma</li>
+          <li id="antrenorDeneyimHTMLlist">Deneyim: 10 Yıl</li>
+          <li id="antrenorİletisimBilgileriHTMLlist">İletişim Bilgileri: antrenor@mail.com | Telefon: +123 456 7890</li>
+
+    </section>
+
+    <section id="danısanlar">
+        <h2>Atanmış Danışanlar</h2>
+        <ul>
+            <li>
+                <div class="danisan-kutu">
+                <strong>Danışan 1:</strong>
+                <ul>
+                    <li><strong>İsim:</strong> John</li>
+                    <li><strong>Soyisim:</strong> Doe</li>
+                    <li><strong>Kilo:</strong> 70 kg</li>
+                    <li><strong>Boy:</strong> 175 cm</li>
+                    <li><strong>Vücut Yağ Oranı:</strong> 15%</li>
+                    <li><strong>Kas Kütlesi:</strong> 60 kg</li>
+                    <li><strong>Vücut Kitle İndeksi (BMI):</strong> 22.86</li>
+                </ul>
+                </div>
+            </li>
+            <li>
+                <strong>Danışan 2:</strong>
+                <ul>
+                    <li><strong>İsim:</strong> Jane</li>
+                    <li><strong>Soyisim:</strong> Smith</li>
+                    <li><strong>Kilo:</strong> 65 kg</li>
+                    <li><strong>Boy:</strong> 165 cm</li>
+                    <li><strong>Vücut Yağ Oranı:</strong> 20%</li>
+                    <li><strong>Kas Kütlesi:</strong> 55 kg</li>
+                    <li><strong>Vücut Kitle İndeksi (BMI):</strong> 23.88</li>
+                </ul>
+            </li>
+            
+        </ul>
+    </section>
+
+    <section id="egzersizprogramları">
+        <h2>Egzersiz Programları</h2>
+        <ul>
+            <li>
+                <strong>Program 1:</strong> Kilo Alma Programı - 4 Hafta
+                <ul>
+                    <li><strong>Egzersiz Adı:</strong> Squats</li>
+                    <li><strong>Hedef:</strong> Kilo Alma</li>
+                    <li><strong>Set ve Tekrar Sayısı:</strong> 3x12</li>
+                    <li><strong>Video Rehberi:</strong> [Video Link]</li>
+                    <li><strong>Başlama Tarihi:</strong> 01/01/2023</li>
+                    <li><strong>Program Süresi:</strong> 4 Hafta</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Program 2:</strong> Kilo Verme Programı - 6 Hafta
+                <ul>
+                    <li><strong>Egzersiz Adı:</strong> Cardio Workout</li>
+                    <li><strong>Hedef:</strong> Kilo Verme</li>
+                    <li><strong>Set ve Tekrar Sayısı:</strong> 4x15</li>
+                    <li><strong>Video Rehberi:</strong> [Video Link]</li>
+                    <li><strong>Başlama Tarihi:</strong> 02/01/2023</li>
+                    <li><strong>Program Süresi:</strong> 6 Hafta</li>
+                </ul>
+            </li>
+            <!-- ... -->
+        </ul>
+    </section>
+
+    <section id="beslenmeplanları">
+        <h2>Beslenme Planları</h2>
+        <ul>
+            <li>
+                <strong>Plan 1:</strong> Kilo Koruma Diyeti
+                <ul>
+                    <li><strong>Hedef:</strong> Kilo Koruma</li>
+                    <li><strong>Günlük Öğünler:</strong> Kahvaltı, Öğle, Akşam</li>
+                    <li><strong>Kalori Hedefi:</strong> 2000 kcal</li>
+
+                </ul>
+                
+            </li>
+            <li>
+                <strong>Plan 2:</strong> Kas Kazanma Diyeti
+                <ul>
+                    <li><strong>Hedef:</strong> Kas Kazanma</li>
+                    <li><strong>Günlük Öğünler:</strong> Kahvaltı, Ara Öğün, Akşam Yemeği</li>
+                    <li><strong>Kalori Hedefi:</strong> 2500 kcal</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Plan 3:</strong>  Kilo Verme
+                <ul>
+                    <li><strong>Hedef:</strong> Kilo verme</li>
+                    <li><strong>Günlük Öğünler:</strong> Kahvaltı,kuşluk, Öğle, Akşam</li>
+                    <li><strong>Kalori Hedefi:</strong> 1500 kcal</li>
+                </ul>
+            </li>
+            <!-- ... -->
+        </ul>
+    </section>
+
+    <section id="iletisim">
+        <h2>İletişim</h2>
+        <p>Kullanıcılarınızla iletişim kurmak için portalı kullanın ve onlara mesajlar gönderin.</p>
+        <ul>
+            <li>
+                <strong>Danışan 1:</strong>
+                <ul>
+                    <li><strong>İsim:</strong> Emir</li>
+                    <li><strong>Soyisim:</strong> Acar</li>
+                    <!-- Diğer danışan özellikleri -->
+                    <form id="contactForm1" class="contact-form">
+                        <label for="message1">Mesajınız:</label>
+                        <textarea id="message1" name="message" rows="4" required></textarea>
+                        
+                    </form>
+                    <br>
+                    <button type="submit">Gönder</button>
+                    <br>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <strong>Danışan 2:</strong>
+                <ul>
+                    <li><strong>İsim:</strong> Furkan</li>
+                    <li><strong>Soyisim:</strong> Genç</li>
+                    <!-- Diğer danışan özellikleri -->
+                    <form id="contactForm2" class="contact-form">
+                        <label for="message2">Mesajınız:</label>
+                        <textarea id="message2" name="message" rows="4" required></textarea>
+                    </form>
+                    <br>
+                    <button type="submit">Gönder</button>
+                    <br>
+                </ul>
+            </li>
+            
+        </ul>
+    </section>
+
+   
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+     
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDfEODCehjmxmyS537GkHcfWfi-R6dBoic",
+        authDomain: "fitlifedatabase.firebaseapp.com",
+        databaseURL: "https://fitlifedatabase-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "fitlifedatabase",
+        storageBucket: "fitlifedatabase.appspot.com",
+        messagingSenderId: "698017456952",
+        appId: "1:698017456952:web:f0069ba9afc6b100f797cd"
+      };
+     
+       // Initialize Firebase
+       const app = initializeApp(firebaseConfig);
+       import {getDatabase, ref, get, set, child, update, remove}
+       from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"
+       const db = getDatabase();
+
+       console.log("KEY:"+localStorage.getItem("AntrenorFullName"));
+        let fullnameofdatabase = localStorage.getItem("AntrenorFullName");
+        localStorage.clear();
+        const dbref = ref(db);
+        get(child(dbref, "Antrenor/" + fullnameofdatabase))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    
+                    /*findName.innerHTML = "Name: " + snapshot.val().Name;
+                    findAge.innerHTML = "Age: " + snapshot.val().Age;*/
+                    alert(snapshot.val().isim+" "+snapshot.val().soyisim+" "+snapshot.val().mailAdresi+" "+snapshot.val().telefonNumarasi);
+
+                    document.getElementById('antrenorAdiHTMLlist').innerHTML="<strong>Ad:</strong>"+snapshot.val().isim;
+                    document.getElementById('antrenorSoyadiHTMLlist').innerHTML="<strong>Soyad:</strong>:"+snapshot.val().soyisim;
+                    document.getElementById('antrenorUzmanlikAlanlariHTMLlist').innerHTML="<strong>Uzmanlık Alanları:</strong> Alanları"+snapshot.val().uzmanlikAlanlari;
+                    document.getElementById('antrenorDeneyimHTMLlist').innerHTML="<strong>Deneyim:</strong>:"+snapshot.val().deneyim;
+                    document.getElementById('antrenorİletisimBilgileriHTMLlist').innerHTML="<strong>İletişim Bilgileri:</strong> Bilgileri:"+snapshot.val().mailAdresi+" | "+snapshot.val().telefonNumarasi;
+                    
+                    
+                        get(child(dbref, "Antrenor/" + fullnameofdatabase+"/Ogrenciler"))
+                        .then((snapshot)=>{
+                        if(snapshot.exists()){
+                            //OGRENCİLERİ ARIYORUZ
+                            for(let i=0;i<snapshot.numChildren();i++){
+
+                            }
+
+
+                        } else {
+                            alert("No data found");
+                        }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+                    
+                    /*<li id="antrenorAdiHTMLlist">Ad: Antrenör Adı,kadir </li>
+                      <li id="antrenorSoyadiHTMLlist">Soyad: Antrenör Soyadı,hoca</li>
+                      <li id="antrenorUzmanlikAlanlariHTMLlist">Uzmanlık Alanları: Kilo Aldırma, Kilo Verdirme, Kilo Koruma, Kas Kazanma</li>
+                      <li id="antrenorDeneyimHTMLlist">Deneyim: 10 Yıl</li>
+                      <li id="antrenorİletisimBilgileriHTMLlist">İletişim Bilgileri: antrenor@mail.com | Telefon: +123 456 7890</li>*/
+                   //! document.getElementById('profilfotografi').src=snapshot.val().profilFotografi; BURADA BİR HATA VAR!!!!
+                } else {
+                    alert("No data found");
+                }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+
+
+
+        document.querySelectorAll('nav a').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                var targetSection = document.getElementById(link.getAttribute('href').substring(1));
+
+                // Tüm bölümleri gizle
+                document.querySelectorAll('section').forEach(function(section) {
+                    section.style.display = 'none';
+                });
+
+                // Hedef bölümü göster
+                targetSection.style.display = 'block';
+
+                // Hedef bölümüne yavaşça kaydır
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
+<!--5 aralık final antrenor2-->

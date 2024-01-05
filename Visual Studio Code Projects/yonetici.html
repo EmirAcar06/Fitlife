@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Kullanıcı Yönetimi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("arkaplan5.png");
+            color: #333;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color:#555;
+        }
+        nav li:hover {
+            color:#555;
+        }
+        section {
+            display: none;
+            margin: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3, p, ul, li {
+            color:#fff;
+            margin: 0;
+            padding: 0;
+        }
+        label{
+            color: #fff;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background: transparent; /* Input alanını şeffaf yapar */
+            border: 1px solid #fff; /* Kenar çizgilerini beyaz yapar */
+            color: #fff; /* Yazı rengini beyaz yapar */
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            color: #fff;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1> Admin Portal</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#userManagement">Antrenor Yönetimi</a></li>
+            <li><a href="#dataManagement">Veri Yönetimi</a></li>
+            <li id="alternateAdminDisplayListItem">Alternatif Yönetim Ekranı</li>
+        </ul>
+    </nav>
+
+    <section id="userManagement">
+        <!-- Yeni kullanıcı ekleme formu -->
+        <form id="addCoachForm"> 
+            <label for="coachname">Antrenor Adı:</label>
+            <input type="text" id="coachname" name="coachname" required>
+            
+            <label for="coachsurname">Antrenor Soyadı:</label>
+            <input type="text" id="coachsurname" name="coachsurname" required>
+
+            <label for="coachexperience">Deneyim (x yıl):</label>
+            <input type="text" id="coachexperience" name="coachexperience" required>
+
+            <label for="coachmail">Mail:</label>
+            <input type="text" id="coachmail" name="coachmail" required>
+            
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="coachphonenumber">Telefon Numarası:</label>
+            <input type="text" id="coachphonenumber" name="coachphonenumber" required>
+
+            <label for="coachexpertise">Uzmanlık Alanları:</label>
+            <input type="text" id="coachexpertise" name="coachexpertise" required>
+            
+            <button type="submit">Antrenor Ekle</button>
+        </form>
+
+        <br>
+
+        <!-- Kullanıcı listesi -->
+        <h3>Kullanıcı Listesi</h3>
+        <table id="userList">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Kullanıcı Adı</th>
+                    <th>Şifre</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </section>
+
+    <section id="dataManagement">
+        <h2>Veri Yönetimi</h2>
+        
+    
+        <h3>Danışan Listesi</h3>
+        <table id="clientList">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Adı</th>
+                    <th>Yaşı</th>
+                    <th>Email</th>
+                    <th>İşlemler</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <!-- Antrenör listesi -->
+        <h3>Antrenör Listesi</h3>
+        <table id="coachList">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Adı</th>
+                    <th>Uzmanlık</th>
+                    <th>Email</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Antrenörler buraya dinamik olarak eklenecek -->
+            </tbody>
+        </table>
+    </section>
+
+    <script type="module">
+          //THIS IS WHERE YOU PASTE THE CODE TO CONNECT TO YOUR OWN DATABASE
+        //Copy and paste the CDN bit of code from your app that you created on Firebase.
+        //The script tag above is already there, so careful not to have duplicate script tags.
+        //After you've copied and pasted, just delete the unnecessary script tags. 
+   
+         // Import the functions you need from the SDKs you need
+         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+         // TODO: Add SDKs for Firebase products that you want to use
+         // https://firebase.google.com/docs/web/setup#available-libraries
+
+         // Your web app's Firebase configuration
+         const firebaseConfig = {
+           apiKey: "AIzaSyDfEODCehjmxmyS537GkHcfWfi-R6dBoic",
+           authDomain: "fitlifedatabase.firebaseapp.com",
+           databaseURL: "https://fitlifedatabase-default-rtdb.europe-west1.firebasedatabase.app",
+           projectId: "fitlifedatabase",
+           storageBucket: "fitlifedatabase.appspot.com",
+           messagingSenderId: "698017456952",
+           appId: "1:698017456952:web:f0069ba9afc6b100f797cd"
+         };
+
+  
+         // Initialize Firebase
+         const app = initializeApp(firebaseConfig);
+
+
+         import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"
+        //Copy and Paste the URL from near the top of the CDN you pasted in from firebase
+        // (the one where you imported "initializeApp" from),
+        //but change "firebase-app" to "firebase-database"
+        
+
+        const db = getDatabase();
+
+        document.getElementById('alternateAdminDisplayListItem').addEventListener("click",alternateAdminDisplayListItemfunc);
+
+        function alternateAdminDisplayListItemfunc (){
+            window.location.href = "yonetici2.html";
+        }
+
+        var users = [
+            { id: 1, username: 'admin', password: 'adminpass' },
+            { id: 2, username: 'user1', password: 'userpass1' },
+            // Buraya istediğiniz kadar kullanıcı ekleyebilirsiniz
+        ];
+
+        var clients = [
+            { id: 1, name: 'furkan tadiç', age: 25, email: 'tadiç@example.com' },
+            { id: 2, name: 'Jane Smith', age: 30, email: 'jane@example.com' }
+            // Buraya istediğiniz kadar danışan ekleyebilirsiniz
+        ];
+
+        var coaches = [
+            { id: 101, name: 'Furkan Genç', expertise: 'Weight Loss', email: 'furkan@example.com' },
+            { id: 102, name: 'Emir Acar', expertise: 'Muscle Gain', email: 'emir@example.com' }
+            // Buraya istediğiniz kadar antrenör ekleyebilirsiniz
+        ];
+
+        var userList = document.getElementById('userList');
+        var clientList = document.getElementById('clientList');
+        var coachList = document.getElementById('coachList');
+
+        // Kullanıcıları tabloya ekle
+        function renderUserTable() {
+            userList.innerHTML = '<thead><tr><th>ID</th><th>Kullanıcı Adı</th><th>Şifre</th><th>İşlemler</th></tr></thead><tbody>';
+            users.forEach(function(user) {
+                userList.innerHTML += `<tr><td>${user.id}</td><td>${user.username}</td><td>${user.password}</td><td><button onclick="editUser(${user.id})">Düzenle</button></td></tr>`;
+            });
+            userList.innerHTML += '</tbody>';
+        }
+
+        // Danışanları tabloya ekle
+        function renderClientTable() {
+            clientList.innerHTML = '<thead><tr><th>ID</th><th>Adı</th><th>Yaşı</th><th>Email</th><th>İşlemler</th></tr></thead><tbody>';
+            clients.forEach(function(client) {
+                clientList.innerHTML += `<tr><td>${client.id}</td><td>${client.name}</td><td>${client.age}</td><td>${client.email}</td><td><button onclick="editClient(${client.id})">Düzenle</button></td></tr>`;
+            });
+            clientList.innerHTML += '</tbody>';
+        }
+
+        // Antrenörleri tabloya ekle
+        function renderCoachTable() {
+            coachList.innerHTML = '<thead><tr><th>ID</th><th>Adı</th><th>Uzmanlık</th><th>Email</th><th>İşlemler</th></tr></thead><tbody>';
+            coaches.forEach(function(coach) {
+                coachList.innerHTML += `<tr><td>${coach.id}</td><td>${coach.name}</td><td>${coach.expertise}</td><td>${coach.email}</td><td><button onclick="editCoach(${coach.id})">Düzenle</button></td></tr>`;
+            });
+            coachList.innerHTML += '</tbody>';
+        }
+
+        // Sayfa yüklendiğinde tabloları oluştur
+        renderUserTable();
+        renderClientTable();
+        renderCoachTable();
+
+        // Yeni kullanıcı ekleme formu
+        var addCoachForm = document.getElementById('addCoachForm');
+        addCoachForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById('coachname').value +" "+document.getElementById('coachsurname').value;
+            var password = document.getElementById('password').value;
+            var experience=document.getElementById('coachexperience').value;
+            var email=document.getElementById('coachmail').value;
+            var phonenumber=document.getElementById('coachphonenumber').value;
+            var expertise=document.getElementById('coachexpertise').value;
+
+            set(ref(db, "Antrenor/"+ username),{  //antrenör ekleme
+                isim: document.getElementById('coachname').value,
+                soyisim:document.getElementById('coachsurname').value,
+                deneyim:experience,
+                mailAdresi:email,
+                sifre:password,
+                telefonNumarasi:phonenumber,
+                uzmanlikAlanlari:expertise
+            })
+            .then(()=>{
+                alert("Data added successfully");
+                
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+
+            // Yeni kullanıcıyı ekleyin
+                var newUser = { id: users.length + 1, username: username, password: password };
+                users.push(newUser);
+            // Kullanıcı tablosunu güncelleyin
+            renderUserTable();
+
+            // Formu temizle
+            addCoachForm.reset();
+        });
+
+        // Kullanıcı düzenleme fonksiyonu
+        function editUser(userId) {
+            alert(`Kullanıcı ID ${userId} düzenleniyor.`);
+            // Düzenleme işlemleri burada yapılacak
+        }
+
+        // Danışan düzenleme fonksiyonu
+        function editClient(clientId) {
+            alert(`Danışan ID ${clientId} düzenleniyor.`);
+            // Düzenleme işlemleri burada yapılacak
+        }
+
+        // Antrenör düzenleme fonksiyonu
+        function editCoach(coachId) {
+            alert(`Antrenör ID ${coachId} düzenleniyor.`);
+            // Düzenleme işlemleri burada yapılacak
+        }
+
+        // Sayfa içinde gezinme
+        document.querySelectorAll('nav a').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                var targetSection = document.getElementById(link.getAttribute('href').substring(1));
+
+                // Tüm bölümleri gizle
+                document.querySelectorAll('section').forEach(function(section) {
+                    section.style.display = 'none';
+                });
+
+                // Hedef bölümü göster
+                targetSection.style.display = 'block';
+
+                // Hedef bölümüne yavaşça kaydır
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
+<!--5  aralık final yönetici-->

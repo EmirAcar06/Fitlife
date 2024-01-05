@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portalı</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background-image:url("arkaplan4.png");
+        }
+        header {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .section {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            color: #fff;
+            padding: 8px;
+            text-align: left;
+        }
+        h2{
+            color: #fff;
+        }
+        th {
+            background-color: black;
+            color: #fff;
+        }
+        .edit-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .edit-form label,
+        .edit-form input,
+        .edit-form button {
+            display: block;
+            margin-bottom: 10px;
+            
+        }
+        div #username,div #password{
+            background: transparent; /* Input alanını şeffaf yapar */
+            border: 1px solid #fff; /* Kenar çizgilerini beyaz yapar */
+            color: #fff; /* Yazı rengini beyaz yapar */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="display-4">Admin Portalı</h1>
+    </header>
+
+    <div class="container">
+        <!-- Kullanıcı ekleme formu -->
+        <div class="section">
+            <h2 class="mb-4">Kullanıcı Ekle</h2>
+            <form id="addUserForm">
+                <div class="form-group">
+                    <label for="username">Kullanıcı Adı:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Şifre:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                
+                <button type="button" class="btn btn-primary" onclick="addUser()">Kullanıcı Ekle</button>
+            </form>
+        </div>
+
+        <!-- Kullanıcı listesi -->
+        <div class="section">
+            <h2 class="mb-4">Kullanıcı Listesi</h2>
+            <table id="userList" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Şifre</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Kullanıcılar buraya dinamik olarak eklenecek -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Danışman listesi -->
+        <!--<div class="section">
+            <h2 class="mb-4">Danışman Listesi</h2>
+            <table id="advisorList" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Adı Soyadı</th>
+                        <th>Rolü</th>
+                        <th>İletişim Bilgisi</th>
+                    </tr>
+                </thead>
+                <tbody>-->
+                    <!-- Danışmanlar buraya dinamik olarak eklenecek 
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>Proje Danışmanı</td>
+                        <td>johndoe@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>Akademik Danışman</td>
+                        <td>janesmith@example.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>-->
+
+        <!-- Kullanıcı düzenleme formu -->
+        <div class="edit-form" id="editUserForm">
+            <h2 class="mb-4">Kullanıcı Düzenle</h2>
+            <form>
+                <div class="form-group">
+                    <label for="editUsername">Kullanıcı Adı:</label>
+                    <input type="text" id="editUsername" name="editUsername" class="form-control" required>
+                <!--</div>
+                <div class="form-group">-->
+                    <label for="editPassword">Şifre:</label>
+                    <input type="password" id="editPassword" name="editPassword" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-success" onclick="saveEditUser()">Kaydet</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var users = [
+            { id: 1, username: 'admin', password: 'adminpass' },
+            { id: 2, username: 'user1', password: 'userpass1' },
+            // Buraya istediğiniz kadar kullanıcı ekleyebilirsiniz
+        ];
+
+        // Kullanıcı tablosunu güncelleyin
+        function renderUserTable() {
+            var userList = document.getElementById('userList');
+            userList.innerHTML = '<thead><tr><th>ID</th><th>Kullanıcı Adı</th><th>Şifre</th><th>İşlemler</th></tr></thead><tbody>';
+            users.forEach(function(user) {
+                userList.innerHTML += `<tr><td>${user.id}</td><td>${user.username}</td><td>${user.password}</td><td><button class="btn btn-warning btn-sm" onclick="editUser(${user.id})">Düzenle</button><button class="btn btn-danger btn-sm ml-2" onclick="deleteUser(${user.id})">Sil</button></td></tr>`;
+            });
+            userList.innerHTML += '</tbody>';
+        }
+
+        // Yeni kullanıcı ekleme fonksiyonu
+        function addUser() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Yeni kullanıcıyı ekleyin
+            var newUser = { id: users.length + 1, username: username, password: password };
+            users.push(newUser);
+
+            // Kullanıcı tablosunu güncelleyin
+            renderUserTable();
+
+            // Formu temizle
+            document.getElementById('addUserForm').reset();
+        }
+
+        // Kullanıcı düzenleme fonksiyonu
+        function editUser(userId) {
+            var editedUser = users.find(user => user.id === userId);
+            if (editedUser) {
+                var editUsernameInput = document.getElementById('editUsername');
+                var editPasswordInput = document.getElementById('editPassword');
+
+                // Formu doldur
+                editUsernameInput.value = editedUser.username;
+                editPasswordInput.value = editedUser.password;
+
+                // Düzenleme formunu göster
+                var editUserForm = document.getElementById('editUserForm');
+                editUserForm.style.display = 'block';
+
+                // Kaydetme işlemi için düzenlenen kullanıcının ID'sini sakla
+                editUserForm.dataset.userId = userId;
+            }
+        }
+
+        // Kullanıcı silme fonksiyonu
+        function deleteUser(userId) {
+            var index = users.findIndex(user => user.id === userId);
+            if (index !== -1) {
+                users.splice(index, 1);
+                renderUserTable();
+            }
+        }
+
+        // Kaydetme işlemi
+        function saveEditUser() {
+            var editedUserId = document.getElementById('editUserForm').dataset.userId;
+            var editUsernameInput = document.getElementById('editUsername');
+            var editPasswordInput = document.getElementById('editPassword');
+
+            // Değişiklikleri kaydet
+            var editedUser = users.find(user => user.id === parseInt(editedUserId));
+            if (editedUser) {
+                editedUser.username = editUsernameInput.value;
+                editedUser.password = editPasswordInput.value;
+
+                // Kullanıcı tablosunu güncelle
+                renderUserTable();
+
+                // Düzenleme formunu gizle
+                var editUserForm = document.getElementById('editUserForm');
+                editUserForm.style.display = 'none';
+            }
+        }
+
+        // Sayfa yüklendiğinde tabloyu oluştur
+        renderUserTable();
+    </script>
+
+</body>
+</html>
+<!--5  aralık final yönetici2-->
